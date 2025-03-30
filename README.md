@@ -37,9 +37,8 @@ In the code, make the following changes:
 - **Static IP**: If you want to use a static IP address (instead of DHCP), replace the `IPAddress ip(10, 197, 12, 226);` line with your preferred IP address.
 
 #### 3. MQTT Setup
-Register at AskSensors (https://www.asksensors.com/) and generate an API key in the AskSensors Dashboard.
-
-Use the provided topic (actuator/your_username/apiKeyOut) to control the actuator (LED) through the MQTT service.
+- Register at AskSensors (https://www.asksensors.com/) and generate an API key in the AskSensors Dashboard.
+- Use the provided topic (actuator/your_username/apiKeyOut) to control the actuator (LED) through the MQTT service.
 
 #### 4. Testing
 After uploading the code and ensuring the Ethernet Shield is connected to your network:
