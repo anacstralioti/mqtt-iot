@@ -1,19 +1,12 @@
-/*
- * Description: LED Control with AskSensors and Arduino Uno + Ethernet Shield using MQTT
- */
- 
- 
 #include <SPI.h>
 #include <Ethernet.h>
 #include <PubSubClient.h>
-
-// ETHERNET config.
 
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
 // Static IP address in case DHCP fails
 IPAddress ip(10, 197, 12, 226);
 
-// cON user config
+// User config
 const char* username = "username"; // my AskSensors username
 const char* subTopic = "actuator/username/apiKeyOut"; 
 const int LED_pin = 8; // Led pin
@@ -30,14 +23,14 @@ void setup() {
   Serial.println("*****************************************************");
   Serial.println("********** Program Start: Control LED with AskSensors over MQTT");
   Serial.println("Set LED as output");
-  pinMode(LED_pin, OUTPUT);   // set led as output
+  pinMode(LED_pin, OUTPUT);
   
   if (Ethernet.begin(mac) == 0) {
     Serial.println("Failed to configure Ethernet using DHCP");
-    // try to configure using IP address instead of DHCP:
+    // Try to configure using IP address instead of DHCP:
     Ethernet.begin(mac, ip);
   }
-  // give the Ethernet shield a second to initialize:
+  // Give the Ethernet shield a second to initialize:
   delay(1000);
   Serial.print("IP Address: ");
   Serial.println(Ethernet.localIP());
@@ -50,7 +43,6 @@ void setup() {
     reconnect();
   Serial.print("********** Subscribe to AskSensors actuator topic:");
   Serial.print(subTopic);
-  // subscribe
   client.subscribe(subTopic);
 }
 
